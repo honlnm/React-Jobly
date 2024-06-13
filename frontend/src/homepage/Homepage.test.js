@@ -1,24 +1,15 @@
 import React, { act } from "react";
 import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
+import Home from "./Homepage";
 import { UserProvider } from "../testUtils";
-import PrivateRoute from "./PrivateRoute";
 
-it("renders without crashing", function () {
-    render(
-        <MemoryRouter>
-            <UserProvider>
-                <PrivateRoute />
-            </UserProvider>
-        </MemoryRouter>,
-    );
-});
 
 it("matches snapshot", function () {
     const { asFragment } = render(
         <MemoryRouter>
             <UserProvider>
-                <PrivateRoute />
+                <Home />
             </UserProvider>
         </MemoryRouter>,
     );
@@ -29,7 +20,7 @@ it("matches snapshot when logged out", function () {
     const { asFragment } = render(
         <MemoryRouter>
             <UserProvider currentUser={null}>
-                <PrivateRoute />
+                <Home />
             </UserProvider>
         </MemoryRouter>,
     );

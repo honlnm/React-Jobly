@@ -1,4 +1,4 @@
-import React from "react";
+import React, { act } from "react";
 import { render } from "@testing-library/react";
 import Company from "./CompanyDetail";
 import { MemoryRouter, Route } from "react-router-dom";

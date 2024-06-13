@@ -1,14 +1,12 @@
 import React, { act } from "react";
 import { render } from "@testing-library/react";
-import JobCard from "./JobCard";
+import Profile from "./ProfileForm";
 import { UserProvider } from "../testUtils";
 
-
 it("matches snapshot", function () {
-    let item = { title: "CEO", salary: 1000000, equity: 10 };
     const { asFragment } = render(
         <UserProvider>
-            <JobCard item={item} />
+            <Profile />
         </UserProvider>,
     );
     expect(asFragment()).toMatchSnapshot();

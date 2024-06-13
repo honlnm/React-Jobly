@@ -1,4 +1,4 @@
-import React from "react";
+import React, { act } from "react";
 import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import Navigation from "./Navigation";
