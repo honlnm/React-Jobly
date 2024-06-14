@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Navigate } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 
 function PrivateRoute({ exact, path, children }) {
@@ -13,7 +13,7 @@ function PrivateRoute({ exact, path, children }) {
     );
 
     if (!currentUser) {
-        return <Redirect to="/login" />;
+        return <Navigate to="/login" />;
     }
 
     return (
