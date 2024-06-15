@@ -20,36 +20,14 @@ function Routing({ login, signup }) {
     return (
         <div className="pt-5">
             <Routes>
-
-                <Route exact path="/">
-                    <Homepage />
-                </Route>
-
-                <Route exact path="/login">
-                    <LoginForm login={login} />
-                </Route>
-
-                <Route exact path="/signup">
-                    <SignupForm signup={signup} />
-                </Route>
-
-                <PrivateRoute exact path="/companies">
-                    <CompanyList />
-                </PrivateRoute>
-
-                <PrivateRoute exact path="/jobs">
-                    <JobList />
-                </PrivateRoute>
-
-                <PrivateRoute exact path="/companies/:handle">
-                    <CompanyDetail />
-                </PrivateRoute>
-
-                <PrivateRoute path="/profile">
-                    <ProfileForm />
-                </PrivateRoute>
-
-                <Navigate to="/" />
+                <Route exact path="/" element={<Homepage />} />
+                <Route exact path="/login" element={<LoginForm login={login} />} />
+                <Route exact path="/signup" element={<SignupForm signup={signup} />} />
+                <Route path="/companies" element={<PrivateRoute element={<CompanyList />} />} />
+                <Route path="/jobs" element={<PrivateRoute element={<JobList />} />} />
+                <Route path="/companies/:handle" element={<PrivateRoute element={<CompanyDetail />} />} />
+                <Route path="/profile" element={<PrivateRoute element={<ProfileForm />} />} />
+                <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </div>
     );

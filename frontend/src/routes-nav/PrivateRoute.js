@@ -2,25 +2,16 @@ import React, { useContext } from "react";
 import { Route, Navigate } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 
-function PrivateRoute({ exact, path, children }) {
+function PrivateRoute({ element }) {
     const { currentUser } = useContext(UserContext);
 
-    console.debug(
-        "PrivateRoute",
-        "exact=", exact,
-        "path=", path,
-        "currentUser=", currentUser,
-    );
+    console.debug("PrivateRoute", "currentUser=", currentUser);
 
     if (!currentUser) {
         return <Navigate to="/login" />;
     }
 
-    return (
-        <Route exact={exact} path={path}>
-            {children}
-        </Route>
-    );
+    return element;
 }
 
 export default PrivateRoute;
